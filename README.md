@@ -7,11 +7,11 @@ Spring Boot application integrates `DataSource` quickly.
 - Import dependencies
 
 ```xml
-      <dependency>
-          <groupId>com.yookue.springstarter</groupId>
-          <artifactId>datasource-builder-spring-boot-starter</artifactId>
-          <version>LATEST</version>
-      </dependency>
+    <dependency>
+        <groupId>com.yookue.springstarter</groupId>
+        <artifactId>datasource-builder-spring-boot-starter</artifactId>
+        <version>LATEST</version>
+    </dependency>
 ```
 
 > By default, this starter will auto take effect, you can turn it off by `spring.datasource-builder.enabled = false`
