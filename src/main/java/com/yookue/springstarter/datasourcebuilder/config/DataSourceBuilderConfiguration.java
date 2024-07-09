@@ -17,8 +17,8 @@
 package com.yookue.springstarter.datasourcebuilder.config;
 
 
-import javax.annotation.Nonnull;
 import javax.sql.DataSource;
+import jakarta.annotation.Nonnull;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

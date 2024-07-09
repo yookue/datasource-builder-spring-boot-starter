@@ -19,7 +19,7 @@ package com.yookue.springstarter.datasourcebuilder.util;
 
 import java.security.PublicKey;
 import java.util.Properties;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import com.alibaba.druid.filter.config.ConfigFilter;
@@ -32,7 +32,7 @@ import com.yookue.springstarter.datasourcebuilder.property.DruidDataSourceProper
  * Utilities for decrypting Druid password
  *
  * @author David Hsing
- * @see com.alibaba.druid.filter.config.ConfigTools#decrypt(String)
+ * @see "com.alibaba.druid.filter.config.ConfigTools#decrypt(String)"
  */
 @SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue"})
 public abstract class DruidDecryptUtils {

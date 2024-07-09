@@ -17,7 +17,8 @@
 package org.springframework.boot.autoconfigure.jdbc;
 
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import com.yookue.springstarter.datasourcebuilder.property.HikariDataSourceProperties;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -28,8 +29,9 @@ import com.zaxxer.hikari.HikariDataSource;
  * @author David Hsing
  */
 public abstract class HikariDataSourceBuilder extends AbstractDataSourceBuilder {
-    public static HikariDataSource buildDataSource(@Nonnull HikariDataSourceProperties properties) {
-        HikariDataSource dataSource = createDataSource(properties, HikariDataSource.class);
+    public static HikariDataSource buildDataSource(@Nonnull HikariDataSourceProperties properties, @Nullable JdbcConnectionDetails details) {
+        JdbcConnectionDetails alias = (details != null) ? details : JdbcConfigurationUtils.connectionDetails(properties);
+        HikariDataSource dataSource = JdbcConfigurationUtils.createDataSource(alias, HikariDataSource.class, null);
         setDataSourceProperties(dataSource, properties);
         return dataSource;
     }

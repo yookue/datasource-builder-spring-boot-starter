@@ -17,7 +17,8 @@
 package org.springframework.boot.autoconfigure.jdbc;
 
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import com.yookue.springstarter.datasourcebuilder.property.OracleUcpDataSourceProperties;
 import oracle.ucp.jdbc.PoolDataSourceImpl;
 import oracle.ucp.jdbc.PoolXADataSourceImpl;
@@ -29,14 +30,16 @@ import oracle.ucp.jdbc.PoolXADataSourceImpl;
  * @author David Hsing
  */
 public abstract class OracleUcpDataSourceBuilder extends AbstractDataSourceBuilder {
-    public static PoolDataSourceImpl buildDataSource(@Nonnull OracleUcpDataSourceProperties properties) {
-        PoolDataSourceImpl dataSource = createDataSource(properties, PoolDataSourceImpl.class);
+    public static PoolDataSourceImpl buildDataSource(@Nonnull OracleUcpDataSourceProperties properties, @Nullable JdbcConnectionDetails details) {
+        JdbcConnectionDetails alias = (details != null) ? details : JdbcConfigurationUtils.connectionDetails(properties);
+        PoolDataSourceImpl dataSource = JdbcConfigurationUtils.createDataSource(alias, PoolDataSourceImpl.class, null);
         setDataSourceProperties(dataSource, properties);
         return dataSource;
     }
 
-    public static PoolXADataSourceImpl buildXaDataSource(@Nonnull OracleUcpDataSourceProperties properties) {
-        PoolXADataSourceImpl dataSource = createDataSource(properties, PoolXADataSourceImpl.class);
+    public static PoolXADataSourceImpl buildXaDataSource(@Nonnull OracleUcpDataSourceProperties properties, @Nullable JdbcConnectionDetails details) {
+        JdbcConnectionDetails alias = (details != null) ? details : JdbcConfigurationUtils.connectionDetails(properties);
+        PoolXADataSourceImpl dataSource = JdbcConfigurationUtils.createDataSource(alias, PoolXADataSourceImpl.class, null);
         setDataSourceProperties(dataSource, properties);
         return dataSource;
     }

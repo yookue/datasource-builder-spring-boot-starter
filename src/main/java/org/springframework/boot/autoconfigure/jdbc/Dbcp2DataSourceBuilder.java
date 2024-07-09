@@ -17,7 +17,8 @@
 package org.springframework.boot.autoconfigure.jdbc;
 
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import org.apache.commons.dbcp2.BasicDataSource;
 import com.yookue.springstarter.datasourcebuilder.property.Dbcp2DataSourceProperties;
 
@@ -28,8 +29,9 @@ import com.yookue.springstarter.datasourcebuilder.property.Dbcp2DataSourceProper
  * @author David Hsing
  */
 public abstract class Dbcp2DataSourceBuilder extends AbstractDataSourceBuilder {
-    public static BasicDataSource buildDataSource(@Nonnull Dbcp2DataSourceProperties properties) {
-        BasicDataSource dataSource = createDataSource(properties, BasicDataSource.class);
+    public static BasicDataSource buildDataSource(@Nonnull Dbcp2DataSourceProperties properties, @Nullable JdbcConnectionDetails details) {
+        JdbcConnectionDetails alias = (details != null) ? details : JdbcConfigurationUtils.connectionDetails(properties);
+        BasicDataSource dataSource = JdbcConfigurationUtils.createDataSource(alias, BasicDataSource.class, null);
         setDataSourceProperties(dataSource, properties);
         return dataSource;
     }

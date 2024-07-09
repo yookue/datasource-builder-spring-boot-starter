@@ -18,8 +18,9 @@ package org.springframework.boot.autoconfigure.jdbc;
 
 
 import java.lang.reflect.Field;
-import javax.annotation.Nonnull;
 import javax.sql.DataSource;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.ReflectionUtils;
@@ -43,44 +44,37 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public abstract class AbstractDataSourceBuilder extends DataSourceConfiguration {
-    public static DataSource buildDataSource(@Nonnull DataSourceProperties properties) {
+    public static DataSource buildDataSource(@Nonnull DataSourceProperties properties, @Nullable JdbcConnectionDetails details) {
         Class<? extends DataSource> type = properties.getType();
         if (type == null) {
             if (log.isWarnEnabled()) {
                 log.warn("Data source with url '{}' is missing 'type' property, using generic type instead", properties.getUrl());
             }
-            return new DataSourceConfiguration.Generic().dataSource(properties);
+            return JdbcConfigurationUtils.genericDataSource(properties, details);
         }
-        return buildDataSource(properties, ClassUtils.getQualifiedName(type));
+        return buildDataSource(properties, details, ClassUtils.getQualifiedName(type));
     }
 
-    public static DataSource buildDataSource(@Nonnull DataSourceProperties properties, @Nonnull String poolType) {
+    public static DataSource buildDataSource(@Nonnull DataSourceProperties properties, @Nullable JdbcConnectionDetails details, @Nonnull String poolType) {
         if (!StringUtils.hasText(poolType)) {
-            return new DataSourceConfiguration.Generic().dataSource(properties);
+            return JdbcConfigurationUtils.genericDataSource(properties, details);
         }
-        switch (poolType) {
-            case DataSourcePoolConst.C3P0:
-                return C3p0DataSourceBuilder.buildDataSource((C3p0DataSourceProperties) properties);
-            case DataSourcePoolConst.DBCP2:
-                return Dbcp2DataSourceBuilder.buildDataSource((Dbcp2DataSourceProperties) properties);
-            case DataSourcePoolConst.DRUID:
-                return DruidDataSourceBuilder.buildDataSource((DruidDataSourceProperties) properties);
-            case DataSourcePoolConst.HIKARI:
-                return HikariDataSourceBuilder.buildDataSource((HikariDataSourceProperties) properties);
-            case DataSourcePoolConst.ORACLE_UCP:
-                return OracleUcpDataSourceBuilder.buildDataSource((OracleUcpDataSourceProperties) properties);
-            case DataSourcePoolConst.ORACLE_UCP_XA:
-                return OracleUcpDataSourceBuilder.buildXaDataSource((OracleUcpDataSourceProperties) properties);
-            case DataSourcePoolConst.VIBUR:
-                return ViburDataSourceBuilder.buildDataSource((ViburDataSourceProperties) properties);
-            case DataSourcePoolConst.TOMCAT:
-                return TomcatDataSourceBuilder.buildDataSource((TomcatDataSourceProperties) properties);
-            default:
+        return switch (poolType) {
+            case DataSourcePoolConst.C3P0 -> C3p0DataSourceBuilder.buildDataSource((C3p0DataSourceProperties) properties, details);
+            case DataSourcePoolConst.DBCP2 -> Dbcp2DataSourceBuilder.buildDataSource((Dbcp2DataSourceProperties) properties, details);
+            case DataSourcePoolConst.DRUID -> DruidDataSourceBuilder.buildDataSource((DruidDataSourceProperties) properties, details);
+            case DataSourcePoolConst.HIKARI -> HikariDataSourceBuilder.buildDataSource((HikariDataSourceProperties) properties, details);
+            case DataSourcePoolConst.ORACLE_UCP -> OracleUcpDataSourceBuilder.buildDataSource((OracleUcpDataSourceProperties) properties, details);
+            case DataSourcePoolConst.ORACLE_UCP_XA -> OracleUcpDataSourceBuilder.buildXaDataSource((OracleUcpDataSourceProperties) properties, details);
+            case DataSourcePoolConst.VIBUR -> ViburDataSourceBuilder.buildDataSource((ViburDataSourceProperties) properties, details);
+            case DataSourcePoolConst.TOMCAT -> TomcatDataSourceBuilder.buildDataSource((TomcatDataSourceProperties) properties, details);
+            default -> {
                 if (log.isWarnEnabled()) {
                     log.warn("Data source with url '{}' is an unsupported type, using generic type instead", properties.getUrl());
                 }
-                return new DataSourceConfiguration.Generic().dataSource(properties);
-        }
+                yield JdbcConfigurationUtils.genericDataSource(properties, details);
+            }
+        };
     }
 
     public static void setDataSourceProperties(@Nonnull DataSource dataSource, @Nonnull DataSourceProperties properties) {

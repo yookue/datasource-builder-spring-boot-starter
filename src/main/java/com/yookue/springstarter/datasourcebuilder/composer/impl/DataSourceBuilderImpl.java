@@ -18,14 +18,15 @@ package com.yookue.springstarter.datasourcebuilder.composer.impl;
 
 
 import java.util.Arrays;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
+import jakarta.persistence.EntityManagerFactory;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.jdbc.AbstractDataSourceBuilder;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.autoconfigure.jdbc.JdbcConfigurationUtils;
+import org.springframework.boot.autoconfigure.jdbc.JdbcConnectionDetails;
 import org.springframework.boot.autoconfigure.jdbc.JndiDataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.XADataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers;
@@ -78,7 +79,8 @@ public class DataSourceBuilderImpl implements DataSourceBuilder {
         if (!StringUtils.hasText(properties.getUrl())) {
             return null;
         }
-        return AbstractDataSourceBuilder.buildDataSource(properties);
+        JdbcConnectionDetails details = JdbcConfigurationUtils.connectionDetails(properties);
+        return AbstractDataSourceBuilder.buildDataSource(properties, details);
     }
 
     @Nullable
@@ -90,7 +92,8 @@ public class DataSourceBuilderImpl implements DataSourceBuilder {
         if (!StringUtils.hasText(properties.getUrl())) {
             return null;
         }
-        return AbstractDataSourceBuilder.buildDataSource(properties, type.getValue());
+        JdbcConnectionDetails details = JdbcConfigurationUtils.connectionDetails(properties);
+        return AbstractDataSourceBuilder.buildDataSource(properties, details, type.getValue());
     }
 
     @Nullable
@@ -126,23 +129,15 @@ public class DataSourceBuilderImpl implements DataSourceBuilder {
         if (type == null) {
             return dataSourceProperties(environment, prefix, DataSourceProperties.class);
         }
-        switch (type.getValue()) {
-            case DataSourcePoolConst.C3P0:
-                return dataSourceProperties(environment, prefix, C3p0DataSourceProperties.class);
-            case DataSourcePoolConst.DBCP2:
-                return dataSourceProperties(environment, prefix, Dbcp2DataSourceProperties.class);
-            case DataSourcePoolConst.DRUID:
-                return dataSourceProperties(environment, prefix, DruidDataSourceProperties.class);
-            case DataSourcePoolConst.HIKARI:
-                return dataSourceProperties(environment, prefix, HikariDataSourceProperties.class);
-            case DataSourcePoolConst.ORACLE_UCP:
-            case DataSourcePoolConst.ORACLE_UCP_XA:
-                return dataSourceProperties(environment, prefix, OracleUcpDataSourceProperties.class);
-            case DataSourcePoolConst.TOMCAT:
-                return dataSourceProperties(environment, prefix, TomcatDataSourceProperties.class);
-            default:
-                return dataSourceProperties(environment, prefix, DataSourceProperties.class);
-        }
+        return switch (type.getValue()) {
+            case DataSourcePoolConst.C3P0 -> dataSourceProperties(environment, prefix, C3p0DataSourceProperties.class);
+            case DataSourcePoolConst.DBCP2 -> dataSourceProperties(environment, prefix, Dbcp2DataSourceProperties.class);
+            case DataSourcePoolConst.DRUID -> dataSourceProperties(environment, prefix, DruidDataSourceProperties.class);
+            case DataSourcePoolConst.HIKARI -> dataSourceProperties(environment, prefix, HikariDataSourceProperties.class);
+            case DataSourcePoolConst.ORACLE_UCP, DataSourcePoolConst.ORACLE_UCP_XA -> dataSourceProperties(environment, prefix, OracleUcpDataSourceProperties.class);
+            case DataSourcePoolConst.TOMCAT -> dataSourceProperties(environment, prefix, TomcatDataSourceProperties.class);
+            default -> dataSourceProperties(environment, prefix, DataSourceProperties.class);
+        };
     }
 
     @Nullable
@@ -188,9 +183,10 @@ public class DataSourceBuilderImpl implements DataSourceBuilder {
 
     @Nonnull
     @Override
-    public DataSource xaDataSource(@Nonnull XADataSourceWrapper wrapper, @Nonnull DataSourceProperties properties) throws Exception {
+    public DataSource xaDataSource(@Nonnull XADataSourceWrapper wrapper, @Nonnull DataSourceProperties properties, @Nullable JdbcConnectionDetails details) throws Exception {
         XADataSourceAutoConfiguration configuration = new XADataSourceAutoConfiguration();
         configuration.setBeanClassLoader(classLoader);
-        return configuration.dataSource(wrapper, properties, SingletonObjectProvider.empty());
+        JdbcConnectionDetails alias = (details != null) ? details : JdbcConfigurationUtils.connectionDetails(properties);
+        return configuration.dataSource(wrapper, properties, alias, SingletonObjectProvider.empty());
     }
 }

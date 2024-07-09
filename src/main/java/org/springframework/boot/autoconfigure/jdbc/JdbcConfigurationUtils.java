@@ -17,13 +17,16 @@
 package org.springframework.boot.autoconfigure.jdbc;
 
 
-import javax.annotation.Nonnull;
 import javax.sql.DataSource;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration.JdbcTransactionManagerConfiguration;
 import org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import com.yookue.commonplexus.javaseutil.util.ArrayUtilsWraps;
+import com.yookue.commonplexus.javaseutil.util.MethodUtilsWraps;
 
 
 /**
@@ -34,6 +37,23 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
  */
 @SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue"})
 public abstract class JdbcConfigurationUtils {
+    @SuppressWarnings("unchecked")
+    public static <T extends DataSource> T createDataSource(@Nonnull JdbcConnectionDetails details, @Nonnull Class<T> clazz, @Nullable ClassLoader loader) {
+        Object args = ArrayUtilsWraps.toArray(details, clazz, loader);
+        return (T) MethodUtilsWraps.invokeStaticMethod(DataSourceConfiguration.class, "createDataSource", args);
+    }
+
+    @Nonnull
+    public static JdbcConnectionDetails connectionDetails(@Nonnull DataSourceProperties properties) {
+        return new PropertiesJdbcConnectionDetails(properties);
+    }
+
+    @Nonnull
+    public static DataSource genericDataSource(@Nonnull DataSourceProperties properties, @Nullable JdbcConnectionDetails details) {
+        JdbcConnectionDetails alias = (details != null) ? details : connectionDetails(properties);
+        return new DataSourceConfiguration.Generic().dataSource(properties, alias);
+    }
+
     public static DataSourceTransactionManager transactionManager(@Nonnull Environment environment, @Nonnull DataSource dataSource, @Nonnull ObjectProvider<TransactionManagerCustomizers> customizers) {
         JdbcTransactionManagerConfiguration configuration = new JdbcTransactionManagerConfiguration();
         return configuration.transactionManager(environment, dataSource, customizers);

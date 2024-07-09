@@ -17,7 +17,8 @@
 package org.springframework.boot.autoconfigure.jdbc;
 
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import com.yookue.springstarter.datasourcebuilder.property.TomcatDataSourceProperties;
 
@@ -28,8 +29,9 @@ import com.yookue.springstarter.datasourcebuilder.property.TomcatDataSourcePrope
  * @author David Hsing
  */
 public abstract class TomcatDataSourceBuilder extends AbstractDataSourceBuilder {
-    public static DataSource buildDataSource(@Nonnull TomcatDataSourceProperties properties) {
-        DataSource dataSource = createDataSource(properties, DataSource.class);
+    public static DataSource buildDataSource(@Nonnull TomcatDataSourceProperties properties, @Nullable JdbcConnectionDetails details) {
+        JdbcConnectionDetails alias = (details != null) ? details : JdbcConfigurationUtils.connectionDetails(properties);
+        DataSource dataSource = JdbcConfigurationUtils.createDataSource(alias, DataSource.class, null);
         setDataSourceProperties(dataSource, properties);
         return dataSource;
     }

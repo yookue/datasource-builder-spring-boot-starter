@@ -20,8 +20,8 @@ package org.springframework.boot.autoconfigure.jdbc;
 import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
@@ -40,8 +40,9 @@ import com.yookue.springstarter.datasourcebuilder.property.DruidDataSourceProper
 @SuppressWarnings("unused")
 public abstract class DruidDataSourceBuilder extends DataSourceConfiguration {
     @Nullable
-    public static DruidDataSource buildDataSource(@Nonnull DruidDataSourceProperties properties) {
-        DruidDataSource dataSource = createDataSource(properties, DruidDataSource.class);
+    public static DruidDataSource buildDataSource(@Nonnull DruidDataSourceProperties properties, @Nullable JdbcConnectionDetails details) {
+        JdbcConnectionDetails alias = (details != null) ? details : JdbcConfigurationUtils.connectionDetails(properties);
+        DruidDataSource dataSource = JdbcConfigurationUtils.createDataSource(alias, DruidDataSource.class, null);
         if (dataSource == null) {
             return null;
         }

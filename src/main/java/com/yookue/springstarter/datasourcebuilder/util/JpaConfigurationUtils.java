@@ -17,12 +17,12 @@
 package com.yookue.springstarter.datasourcebuilder.util;
 
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.SharedCacheMode;
-import javax.persistence.ValidationMode;
 import javax.sql.DataSource;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.SharedCacheMode;
+import jakarta.persistence.ValidationMode;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers;
@@ -33,6 +33,7 @@ import org.springframework.orm.jpa.persistenceunit.PersistenceUnitManager;
 import org.springframework.orm.jpa.persistenceunit.PersistenceUnitPostProcessor;
 import org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.TransactionManager;
 import org.springframework.util.StringUtils;
 
 
@@ -115,7 +116,7 @@ public abstract class JpaConfigurationUtils {
     @Nonnull
     public static JpaTransactionManager jpaTransactionManager(@Nullable EntityManagerFactory factory, @Nonnull ObjectProvider<TransactionManagerCustomizers> customizers) {
         JpaTransactionManager transactionManager = (factory != null) ? new JpaTransactionManager(factory) : new JpaTransactionManager();
-        customizers.ifAvailable(customizer -> customizer.customize(transactionManager));
+        customizers.ifAvailable(customizer -> customizer.customize((TransactionManager) transactionManager));
         return transactionManager;
     }
 }

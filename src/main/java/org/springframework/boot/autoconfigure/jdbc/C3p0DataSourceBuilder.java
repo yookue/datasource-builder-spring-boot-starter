@@ -17,7 +17,8 @@
 package org.springframework.boot.autoconfigure.jdbc;
 
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import com.yookue.springstarter.datasourcebuilder.property.C3p0DataSourceProperties;
 
@@ -28,8 +29,9 @@ import com.yookue.springstarter.datasourcebuilder.property.C3p0DataSourcePropert
  * @author David Hsing
  */
 public abstract class C3p0DataSourceBuilder extends AbstractDataSourceBuilder {
-    public static ComboPooledDataSource buildDataSource(@Nonnull C3p0DataSourceProperties properties) {
-        ComboPooledDataSource dataSource = createDataSource(properties, ComboPooledDataSource.class);
+    public static ComboPooledDataSource buildDataSource(@Nonnull C3p0DataSourceProperties properties, @Nullable JdbcConnectionDetails details) {
+        JdbcConnectionDetails alias = (details != null) ? details : JdbcConfigurationUtils.connectionDetails(properties);
+        ComboPooledDataSource dataSource = JdbcConfigurationUtils.createDataSource(alias, ComboPooledDataSource.class, null);
         setDataSourceProperties(dataSource, properties);
         return dataSource;
     }

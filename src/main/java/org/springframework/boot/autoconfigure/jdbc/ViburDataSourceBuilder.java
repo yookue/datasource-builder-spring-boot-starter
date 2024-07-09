@@ -17,7 +17,8 @@
 package org.springframework.boot.autoconfigure.jdbc;
 
 
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import org.vibur.dbcp.ViburDBCPDataSource;
 import org.vibur.dbcp.ViburDataSource;
 import com.yookue.springstarter.datasourcebuilder.property.ViburDataSourceProperties;
@@ -29,8 +30,9 @@ import com.yookue.springstarter.datasourcebuilder.property.ViburDataSourceProper
  * @author David Hsing
  */
 public abstract class ViburDataSourceBuilder extends AbstractDataSourceBuilder {
-    public static ViburDataSource buildDataSource(@Nonnull ViburDataSourceProperties properties) {
-        ViburDataSource dataSource = createDataSource(properties, ViburDBCPDataSource.class);
+    public static ViburDataSource buildDataSource(@Nonnull ViburDataSourceProperties properties, @Nullable JdbcConnectionDetails details) {
+        JdbcConnectionDetails alias = (details != null) ? details : JdbcConfigurationUtils.connectionDetails(properties);
+        ViburDataSource dataSource = JdbcConfigurationUtils.createDataSource(alias, ViburDBCPDataSource.class, null);
         setDataSourceProperties(dataSource, properties);
         return dataSource;
     }

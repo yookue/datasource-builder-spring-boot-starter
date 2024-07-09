@@ -18,7 +18,7 @@ package com.yookue.springstarter.datasourcebuilder.property;
 
 
 import java.util.List;
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.util.StringUtils;
 import lombok.Getter;

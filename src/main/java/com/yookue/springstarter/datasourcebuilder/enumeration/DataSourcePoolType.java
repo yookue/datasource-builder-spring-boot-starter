@@ -29,6 +29,7 @@ import lombok.Getter;
  * @author David Hsing
  */
 @AllArgsConstructor
+@Getter
 @SuppressWarnings("unused")
 public enum DataSourcePoolType implements ValueEnum<String> {
     C3P0(DataSourcePoolConst.C3P0),
@@ -40,6 +41,5 @@ public enum DataSourcePoolType implements ValueEnum<String> {
     VIBUR(DataSourcePoolConst.VIBUR),
     TOMCAT(DataSourcePoolConst.TOMCAT);
 
-    @Getter
     private final String value;
 }
