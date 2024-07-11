@@ -50,7 +50,7 @@ public abstract class JpaConfigurationUtils {
     }
 
     @Nonnull
-    @SuppressWarnings("ConstantConditions")
+    @SuppressWarnings("DataFlowIssue")
     public static PersistenceUnitManager defaultPersistenceUnitManager(@Nullable String persistenceUnit, @Nullable String persistenceUnitRootLocation, @Nullable DataSource dataSource, @Nullable String[] packagesToScan, @Nullable String[] mappingResources, @Nullable String[] xmlLocations, boolean jta, @Nullable ResourceLoader resourceLoader, @Nullable SharedCacheMode cacheMode, @Nullable ValidationMode validationMode, @Nullable PersistenceUnitPostProcessor[] postProcessors) {
         DefaultPersistenceUnitManager manager = new DefaultPersistenceUnitManager();
         manager.setDefaultPersistenceUnitName(persistenceUnit);
