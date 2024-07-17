@@ -59,5 +59,7 @@ public interface DataSourceBuilder {
 
     JpaTransactionManager jpaTransactionManager(@Nullable EntityManagerFactory factory, @Nonnull ObjectProvider<TransactionManagerCustomizers> customizers);
 
+    DataSource xaDataSource(@Nonnull XADataSourceWrapper wrapper, @Nonnull DataSourceProperties properties) throws Exception;
+
     DataSource xaDataSource(@Nonnull XADataSourceWrapper wrapper, @Nonnull DataSourceProperties properties, @Nullable JdbcConnectionDetails details) throws Exception;
 }

@@ -183,6 +183,12 @@ public class DataSourceBuilderImpl implements DataSourceBuilder {
 
     @Nonnull
     @Override
+    public DataSource xaDataSource(@Nonnull XADataSourceWrapper wrapper, @Nonnull DataSourceProperties properties) throws Exception {
+        return xaDataSource(wrapper, properties, null);
+    }
+
+    @Nonnull
+    @Override
     public DataSource xaDataSource(@Nonnull XADataSourceWrapper wrapper, @Nonnull DataSourceProperties properties, @Nullable JdbcConnectionDetails details) throws Exception {
         XADataSourceAutoConfiguration configuration = new XADataSourceAutoConfiguration();
         configuration.setBeanClassLoader(classLoader);
