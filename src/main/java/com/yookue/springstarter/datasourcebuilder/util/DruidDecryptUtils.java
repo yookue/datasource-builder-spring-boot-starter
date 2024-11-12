@@ -59,6 +59,7 @@ public abstract class DruidDecryptUtils {
      * @throws java.security.InvalidKeyException if the given key specification is inappropriate to init an {@link javax.crypto.Cipher} instance
      */
     @Nullable
+    @SuppressWarnings("deprecation")
     public static String decryptPassword(@Nullable String cipherPassword, @Nullable Properties connectionProperties) throws Exception {
         if (!StringUtils.hasText(cipherPassword) || ObjectUtils.isEmpty(connectionProperties)) {
             return null;
