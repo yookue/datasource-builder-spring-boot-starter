@@ -28,6 +28,7 @@ import com.yookue.springstarter.datasourcebuilder.property.C3p0DataSourcePropert
  *
  * @author David Hsing
  */
+@SuppressWarnings("unused")
 public abstract class C3p0DataSourceBuilder extends AbstractDataSourceBuilder {
     public static ComboPooledDataSource buildDataSource(@Nonnull C3p0DataSourceProperties properties, @Nullable JdbcConnectionDetails details) {
         JdbcConnectionDetails alias = (details != null) ? details : JdbcConfigurationUtils.connectionDetails(properties);

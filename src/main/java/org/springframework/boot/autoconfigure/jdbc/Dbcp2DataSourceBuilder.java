@@ -28,6 +28,7 @@ import com.yookue.springstarter.datasourcebuilder.property.Dbcp2DataSourceProper
  *
  * @author David Hsing
  */
+@SuppressWarnings("unused")
 public abstract class Dbcp2DataSourceBuilder extends AbstractDataSourceBuilder {
     public static BasicDataSource buildDataSource(@Nonnull Dbcp2DataSourceProperties properties, @Nullable JdbcConnectionDetails details) {
         JdbcConnectionDetails alias = (details != null) ? details : JdbcConfigurationUtils.connectionDetails(properties);

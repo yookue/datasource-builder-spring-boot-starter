@@ -33,6 +33,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@SuppressWarnings("unused")
 public class HikariDataSourceProperties extends DataSourceProperties {
     private String catalog;
     private Long connectionTimeout;

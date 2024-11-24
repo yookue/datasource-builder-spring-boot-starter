@@ -29,6 +29,7 @@ import oracle.ucp.jdbc.PoolXADataSourceImpl;
  *
  * @author David Hsing
  */
+@SuppressWarnings("unused")
 public abstract class OracleUcpDataSourceBuilder extends AbstractDataSourceBuilder {
     public static PoolDataSourceImpl buildDataSource(@Nonnull OracleUcpDataSourceProperties properties, @Nullable JdbcConnectionDetails details) {
         JdbcConnectionDetails alias = (details != null) ? details : JdbcConfigurationUtils.connectionDetails(properties);

@@ -43,6 +43,7 @@ import lombok.extern.slf4j.Slf4j;
  * @see org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration
  */
 @Slf4j
+@SuppressWarnings("unused")
 public abstract class AbstractDataSourceBuilder extends DataSourceConfiguration {
     public static DataSource buildDataSource(@Nonnull DataSourceProperties properties, @Nullable JdbcConnectionDetails details) {
         Class<? extends DataSource> type = properties.getType();

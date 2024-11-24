@@ -33,6 +33,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@SuppressWarnings("unused")
 public class OracleUcpDataSourceProperties extends DataSourceProperties {
     private Properties pdbRoles = new Properties();
     private Boolean disableAPI;

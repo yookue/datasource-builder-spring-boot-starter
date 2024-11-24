@@ -34,6 +34,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@SuppressWarnings("unused")
 public class Dbcp2DataSourceProperties extends DataSourceProperties {
     private Boolean defaultAutoCommit;
     private Boolean defaultReadOnly;

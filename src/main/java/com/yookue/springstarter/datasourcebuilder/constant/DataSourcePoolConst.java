@@ -22,6 +22,7 @@ package com.yookue.springstarter.datasourcebuilder.constant;
  *
  * @author David Hsing
  */
+@SuppressWarnings("unused")
 public abstract class DataSourcePoolConst {
     public static final String C3P0 = "com.mchange.v2.c3p0.ComboPooledDataSource";    // $NON-NLS-1$
     public static final String DBCP2 = "org.apache.commons.dbcp2.BasicDataSource";    // $NON-NLS-1$

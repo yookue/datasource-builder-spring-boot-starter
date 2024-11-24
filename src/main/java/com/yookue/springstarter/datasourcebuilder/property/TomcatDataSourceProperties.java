@@ -33,6 +33,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@SuppressWarnings("unused")
 public class TomcatDataSourceProperties extends DataSourceProperties {
     private Properties dbProperties = new Properties();
     private Boolean defaultAutoCommit;

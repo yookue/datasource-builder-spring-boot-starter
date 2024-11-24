@@ -33,7 +33,6 @@ import org.springframework.orm.jpa.persistenceunit.PersistenceUnitManager;
 import org.springframework.orm.jpa.persistenceunit.PersistenceUnitPostProcessor;
 import org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.transaction.TransactionManager;
 import org.springframework.util.StringUtils;
 
 
@@ -116,7 +115,7 @@ public abstract class JpaConfigurationUtils {
     @Nonnull
     public static JpaTransactionManager jpaTransactionManager(@Nullable EntityManagerFactory factory, @Nonnull ObjectProvider<TransactionManagerCustomizers> customizers) {
         JpaTransactionManager transactionManager = (factory != null) ? new JpaTransactionManager(factory) : new JpaTransactionManager();
-        customizers.ifAvailable(customizer -> customizer.customize((TransactionManager) transactionManager));
+        customizers.ifAvailable(customizer -> customizer.customize(transactionManager));
         return transactionManager;
     }
 }

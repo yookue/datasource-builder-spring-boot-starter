@@ -28,6 +28,7 @@ import com.zaxxer.hikari.HikariDataSource;
  *
  * @author David Hsing
  */
+@SuppressWarnings("unused")
 public abstract class HikariDataSourceBuilder extends AbstractDataSourceBuilder {
     public static HikariDataSource buildDataSource(@Nonnull HikariDataSourceProperties properties, @Nullable JdbcConnectionDetails details) {
         JdbcConnectionDetails alias = (details != null) ? details : JdbcConfigurationUtils.connectionDetails(properties);

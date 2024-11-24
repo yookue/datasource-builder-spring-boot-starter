@@ -29,6 +29,7 @@ import com.yookue.springstarter.datasourcebuilder.property.ViburDataSourceProper
  *
  * @author David Hsing
  */
+@SuppressWarnings("unused")
 public abstract class ViburDataSourceBuilder extends AbstractDataSourceBuilder {
     public static ViburDataSource buildDataSource(@Nonnull ViburDataSourceProperties properties, @Nullable JdbcConnectionDetails details) {
         JdbcConnectionDetails alias = (details != null) ? details : JdbcConfigurationUtils.connectionDetails(properties);

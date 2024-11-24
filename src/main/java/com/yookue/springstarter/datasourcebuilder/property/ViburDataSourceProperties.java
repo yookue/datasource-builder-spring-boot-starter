@@ -33,6 +33,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@SuppressWarnings("unused")
 public class ViburDataSourceProperties extends DataSourceProperties {
     private Properties driverProperties = new Properties();
     private Integer poolInitialSize;

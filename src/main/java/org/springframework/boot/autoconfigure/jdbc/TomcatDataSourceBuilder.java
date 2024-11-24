@@ -28,6 +28,7 @@ import com.yookue.springstarter.datasourcebuilder.property.TomcatDataSourcePrope
  *
  * @author David Hsing
  */
+@SuppressWarnings("unused")
 public abstract class TomcatDataSourceBuilder extends AbstractDataSourceBuilder {
     public static DataSource buildDataSource(@Nonnull TomcatDataSourceProperties properties, @Nullable JdbcConnectionDetails details) {
         JdbcConnectionDetails alias = (details != null) ? details : JdbcConfigurationUtils.connectionDetails(properties);

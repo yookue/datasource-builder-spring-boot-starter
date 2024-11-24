@@ -32,6 +32,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@SuppressWarnings("unused")
 public class C3p0DataSourceProperties extends DataSourceProperties {
     private Integer acquireIncrement;
     private Integer acquireRetryAttempts;
