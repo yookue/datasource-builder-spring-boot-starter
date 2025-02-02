@@ -403,16 +403,16 @@
                     </archive>
                     <excludePackageNames>org.springframework.*</excludePackageNames>
                     <links>
-                        <link>https://commons.apache.org/proper/commons-dbcp/apidocs/</link>
+                        <link>https://commons.apache.org/proper/commons-dbcp/apidocs</link>
                         <!--
-                        <link>https://docs.oracle.com/en/database/oracle/oracle-database/21/jjuar/</link>
-                        <link>https://docs.spring.io/spring-boot/docs/current/api/</link>
+                        <link>https://docs.oracle.com/en/database/oracle/oracle-database/21/jjuar</link>
+                        <link>https://docs.spring.io/spring-boot/docs/current/api</link>
                         -->
-                        <link>https://docs.spring.io/spring-framework/docs/current/javadoc-api/</link>
+                        <link>https://docs.spring.io/spring-framework/docs/current/javadoc-api</link>
                         <!--
-                        <link>https://javadoc.io/doc/com.oracle.database.jdbc/ucp/latest/</link>
-                        <link>https://javadoc.io/doc/com.zaxxer/HikariCP/4.0.3/</link>
-                        <link>https://tomcat.apache.org/tomcat-9.0-doc/api/</link>
+                        <link>https://javadoc.io/doc/com.oracle.database.jdbc/ucp/latest</link>
+                        <link>https://javadoc.io/doc/com.zaxxer/HikariCP/4.0.3</link>
+                        <link>https://tomcat.apache.org/tomcat-9.0-doc/api</link>
                         -->
                     </links>
                     <taglets>
