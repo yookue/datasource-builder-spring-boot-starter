@@ -113,7 +113,7 @@ public class DataSourceBuilderImpl implements DataSourceBuilder {
         if (!StringUtils.hasText(type)) {
             type = Arrays.stream(DataSourcePoolType.values()).map(DataSourcePoolType::getValue).filter(value -> ClassUtils.isPresent(value, null)).findFirst().orElse(null);
         }
-        return dataSourceProperties(environment, prefix, ValueEnumWraps.fromValueIgnoreCase(DataSourcePoolType.class, type));
+        return dataSourceProperties(environment, prefix, ValueEnumWraps.ofValueIgnoreCase(DataSourcePoolType.class, type));
     }
 
     @Nullable
