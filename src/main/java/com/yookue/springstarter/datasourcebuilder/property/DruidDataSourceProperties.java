@@ -103,7 +103,7 @@ public class DruidDataSourceProperties extends DataSourceProperties {
     private Boolean loadSpifilterSkip;
 
     /**
-     * @see com.alibaba.druid.pool.DruidDataSource#configFromPropeties
+     * @see com.alibaba.druid.pool.DruidDataSource#configFromProperties
      */
     private String filters;    // Separated by ',' and trimmed
 

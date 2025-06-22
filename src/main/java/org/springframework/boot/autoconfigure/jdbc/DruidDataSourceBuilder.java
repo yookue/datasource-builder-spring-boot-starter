@@ -57,7 +57,7 @@ public abstract class DruidDataSourceBuilder extends DataSourceConfiguration {
             } catch (Exception ignored) {
             }
         });
-        dataSource.configFromPropeties(druidProperties);
+        dataSource.configFromProperties(druidProperties);
         if (StringUtils.hasText(properties.getConnectionProperties())) {
             dataSource.setConnectionProperties(properties.getConnectionProperties());
         }

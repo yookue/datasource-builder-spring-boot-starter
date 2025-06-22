@@ -22,7 +22,7 @@
 
     <groupId>com.yookue.springstarter</groupId>
     <artifactId>datasource-builder-spring-boot-starter</artifactId>
-    <version>3.5.0</version>
+    <version>3.5.2</version>
 
     <name>${project.artifactId}</name>
     <description>Yookue Datasource Builder for Spring Boot Starter</description>
@@ -47,11 +47,11 @@
         <project.build.resourceEncoding>${file.encoding}</project.build.resourceEncoding>
         <project.reporting.outputEncoding>${file.encoding}</project.reporting.outputEncoding>
 
-        <spring-boot.version>3.5.0</spring-boot.version>
+        <spring-boot.version>3.5.2</spring-boot.version>
 
         <c3p0.version>0.11.1</c3p0.version>
         <druid.version>1.2.25</druid.version>
-        <plexus-spring-util.version>3.5.0</plexus-spring-util.version>
+        <plexus-spring-util.version>3.5.2</plexus-spring-util.version>
         <vibur-dbcp.version>26.0</vibur-dbcp.version>
 
         <javadoc-docent-maven-plugin.version>2.0.2</javadoc-docent-maven-plugin.version>
