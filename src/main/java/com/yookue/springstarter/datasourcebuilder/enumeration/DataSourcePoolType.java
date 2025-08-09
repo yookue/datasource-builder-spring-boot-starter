@@ -24,7 +24,7 @@ import lombok.Getter;
 
 
 /**
- * Enumerations for supported datasource pools
+ * Enumerations for supported datasource pool types
  *
  * @author David Hsing
  */
