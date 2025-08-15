@@ -17,7 +17,7 @@
 package com.yookue.springstarter.datasourcebuilder.enumeration;
 
 
-import com.yookue.commonplexus.javaseutil.support.ValueEnum;
+import com.yookue.commonplexus.javaseutil.enumeration.ValueEnum;
 import com.yookue.springstarter.datasourcebuilder.constant.DataSourcePoolConst;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
