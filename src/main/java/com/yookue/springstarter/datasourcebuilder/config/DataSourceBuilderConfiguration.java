@@ -20,9 +20,9 @@ package com.yookue.springstarter.datasourcebuilder.config;
 import javax.sql.DataSource;
 import jakarta.annotation.Nonnull;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBooleanProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,7 +41,7 @@ import com.yookue.springstarter.datasourcebuilder.composer.impl.DataSourceBuilde
  * @see com.yookue.springstarter.datasourcebuilder.composer.DataSourceBuilder
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnProperty(prefix = "spring.datasource-builder", name = "enabled", havingValue = "true", matchIfMissing = true)
+@ConditionalOnBooleanProperty(prefix = "spring.datasource-builder", name = "enabled", matchIfMissing = true)
 @ConditionalOnClass(value = {DataSource.class, JdbcOperations.class})
 @AutoConfigureOrder(value = Ordered.HIGHEST_PRECEDENCE + 10000)
 public class DataSourceBuilderConfiguration {
