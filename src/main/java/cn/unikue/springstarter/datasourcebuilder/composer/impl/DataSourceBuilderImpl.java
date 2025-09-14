@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2020 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.yookue.springstarter.datasourcebuilder.composer.impl;
+package cn.unikue.springstarter.datasourcebuilder.composer.impl;
 
 
 import java.util.Arrays;
@@ -38,18 +38,18 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.StringUtils;
-import com.yookue.commonplexus.javaseutil.util.ValueEnumWraps;
-import com.yookue.commonplexus.springutil.support.SingletonObjectProvider;
-import com.yookue.springstarter.datasourcebuilder.composer.DataSourceBuilder;
-import com.yookue.springstarter.datasourcebuilder.constant.DataSourcePoolConst;
-import com.yookue.springstarter.datasourcebuilder.enumeration.DataSourcePoolType;
-import com.yookue.springstarter.datasourcebuilder.property.C3p0DataSourceProperties;
-import com.yookue.springstarter.datasourcebuilder.property.Dbcp2DataSourceProperties;
-import com.yookue.springstarter.datasourcebuilder.property.DruidDataSourceProperties;
-import com.yookue.springstarter.datasourcebuilder.property.HikariDataSourceProperties;
-import com.yookue.springstarter.datasourcebuilder.property.OracleUcpDataSourceProperties;
-import com.yookue.springstarter.datasourcebuilder.property.TomcatDataSourceProperties;
-import com.yookue.springstarter.datasourcebuilder.util.JpaConfigurationUtils;
+import cn.unikue.commonplexus.javaseutil.util.ValueEnumWraps;
+import cn.unikue.commonplexus.springutil.support.SingletonObjectProvider;
+import cn.unikue.springstarter.datasourcebuilder.composer.DataSourceBuilder;
+import cn.unikue.springstarter.datasourcebuilder.constant.DataSourcePoolConst;
+import cn.unikue.springstarter.datasourcebuilder.enumeration.DataSourcePoolType;
+import cn.unikue.springstarter.datasourcebuilder.property.C3p0DataSourceProperties;
+import cn.unikue.springstarter.datasourcebuilder.property.Dbcp2DataSourceProperties;
+import cn.unikue.springstarter.datasourcebuilder.property.DruidDataSourceProperties;
+import cn.unikue.springstarter.datasourcebuilder.property.HikariDataSourceProperties;
+import cn.unikue.springstarter.datasourcebuilder.property.OracleUcpDataSourceProperties;
+import cn.unikue.springstarter.datasourcebuilder.property.TomcatDataSourceProperties;
+import cn.unikue.springstarter.datasourcebuilder.util.JpaConfigurationUtils;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2020 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ import org.springframework.util.ReflectionUtils;
 import org.springframework.util.StringUtils;
 import com.alibaba.druid.filter.Filter;
 import com.alibaba.druid.pool.DruidDataSource;
-import com.yookue.springstarter.datasourcebuilder.property.DruidDataSourceProperties;
+import cn.unikue.springstarter.datasourcebuilder.property.DruidDataSourceProperties;
 
 
 /**

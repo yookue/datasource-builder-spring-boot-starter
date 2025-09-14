@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2020 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.yookue.springstarter.datasourcebuilder.composer;
+package cn.unikue.springstarter.datasourcebuilder.composer;
 
 
 import javax.sql.DataSource;
@@ -29,7 +29,7 @@ import org.springframework.boot.jdbc.XADataSourceWrapper;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.orm.jpa.JpaTransactionManager;
-import com.yookue.springstarter.datasourcebuilder.enumeration.DataSourcePoolType;
+import cn.unikue.springstarter.datasourcebuilder.enumeration.DataSourcePoolType;
 
 
 /**

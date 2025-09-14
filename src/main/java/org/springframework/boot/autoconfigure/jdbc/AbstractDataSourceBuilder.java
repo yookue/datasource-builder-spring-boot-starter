@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2020 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,14 +25,14 @@ import org.springframework.util.ClassUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.util.StringUtils;
-import com.yookue.springstarter.datasourcebuilder.constant.DataSourcePoolConst;
-import com.yookue.springstarter.datasourcebuilder.property.C3p0DataSourceProperties;
-import com.yookue.springstarter.datasourcebuilder.property.Dbcp2DataSourceProperties;
-import com.yookue.springstarter.datasourcebuilder.property.DruidDataSourceProperties;
-import com.yookue.springstarter.datasourcebuilder.property.HikariDataSourceProperties;
-import com.yookue.springstarter.datasourcebuilder.property.OracleUcpDataSourceProperties;
-import com.yookue.springstarter.datasourcebuilder.property.TomcatDataSourceProperties;
-import com.yookue.springstarter.datasourcebuilder.property.ViburDataSourceProperties;
+import cn.unikue.springstarter.datasourcebuilder.constant.DataSourcePoolConst;
+import cn.unikue.springstarter.datasourcebuilder.property.C3p0DataSourceProperties;
+import cn.unikue.springstarter.datasourcebuilder.property.Dbcp2DataSourceProperties;
+import cn.unikue.springstarter.datasourcebuilder.property.DruidDataSourceProperties;
+import cn.unikue.springstarter.datasourcebuilder.property.HikariDataSourceProperties;
+import cn.unikue.springstarter.datasourcebuilder.property.OracleUcpDataSourceProperties;
+import cn.unikue.springstarter.datasourcebuilder.property.TomcatDataSourceProperties;
+import cn.unikue.springstarter.datasourcebuilder.property.ViburDataSourceProperties;
 import lombok.extern.slf4j.Slf4j;
 
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2020 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,8 +25,8 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerA
 import org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import com.yookue.commonplexus.javaseutil.util.ArrayUtilsWraps;
-import com.yookue.commonplexus.javaseutil.util.MethodUtilsWraps;
+import cn.unikue.commonplexus.javaseutil.util.ArrayUtilsWraps;
+import cn.unikue.commonplexus.javaseutil.util.MethodUtilsWraps;
 
 
 /**

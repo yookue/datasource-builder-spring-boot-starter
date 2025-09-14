@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2020 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.yookue.springstarter.datasourcebuilder.config;
+package cn.unikue.springstarter.datasourcebuilder.config;
 
 
 import javax.sql.DataSource;
@@ -30,15 +30,15 @@ import org.springframework.core.Ordered;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.jdbc.core.JdbcOperations;
-import com.yookue.springstarter.datasourcebuilder.composer.DataSourceBuilder;
-import com.yookue.springstarter.datasourcebuilder.composer.impl.DataSourceBuilderImpl;
+import cn.unikue.springstarter.datasourcebuilder.composer.DataSourceBuilder;
+import cn.unikue.springstarter.datasourcebuilder.composer.impl.DataSourceBuilderImpl;
 
 
 /**
- * Configuration for {@link com.yookue.springstarter.datasourcebuilder.composer.DataSourceBuilder}
+ * Configuration for {@link cn.unikue.springstarter.datasourcebuilder.composer.DataSourceBuilder}
  *
  * @author David Hsing
- * @see com.yookue.springstarter.datasourcebuilder.composer.DataSourceBuilder
+ * @see cn.unikue.springstarter.datasourcebuilder.composer.DataSourceBuilder
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnBooleanProperty(prefix = "spring.datasource-builder", name = "enabled", matchIfMissing = true)

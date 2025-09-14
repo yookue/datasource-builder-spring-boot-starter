@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2020 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.yookue.springstarter.datasourcebuilder.enumeration;
+package cn.unikue.springstarter.datasourcebuilder.enumeration;
 
 
-import com.yookue.commonplexus.javaseutil.enumeration.ValueEnum;
-import com.yookue.springstarter.datasourcebuilder.constant.DataSourcePoolConst;
+import cn.unikue.commonplexus.javaseutil.enumeration.ValueEnum;
+import cn.unikue.springstarter.datasourcebuilder.constant.DataSourcePoolConst;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
