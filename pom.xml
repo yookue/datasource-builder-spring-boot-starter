@@ -22,7 +22,7 @@
 
     <groupId>cn.unikue.springstarter</groupId>
     <artifactId>datasource-builder-spring-boot-starter</artifactId>
-    <version>3.5.14</version>
+    <version>3.5.15</version>
 
     <name>${project.artifactId}</name>
     <description>Unikue Datasource Builder for Spring Boot Starter</description>
@@ -47,11 +47,11 @@
         <project.build.resourceEncoding>${file.encoding}</project.build.resourceEncoding>
         <project.reporting.outputEncoding>${file.encoding}</project.reporting.outputEncoding>
 
-        <spring-boot.version>3.5.14</spring-boot.version>
+        <spring-boot.version>3.5.15</spring-boot.version>
 
-        <c3p0.version>0.13.0</c3p0.version>
+        <c3p0.version>0.14.1</c3p0.version>
         <druid.version>1.2.28</druid.version>
-        <plexus-spring-util.version>3.5.14</plexus-spring-util.version>
+        <plexus-spring-util.version>3.5.15</plexus-spring-util.version>
         <vibur-dbcp.version>26.0</vibur-dbcp.version>
 
         <javadoc-docent-maven-plugin.version>2.1.2</javadoc-docent-maven-plugin.version>
@@ -62,7 +62,7 @@
         <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
-        <central-publishing-maven-plugin.version>0.10.0</central-publishing-maven-plugin.version>
+        <central-publishing-maven-plugin.version>0.11.0</central-publishing-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
